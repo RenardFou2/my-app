@@ -1,0 +1,16 @@
+<div class="all" (document:click)="onClick($event)"> 
+    <h2>Mrs</h2>
+    <h3>{{name}} {{surname}}</h3>
+    <p class="birthdate"> Date of birth: {{dateOfBirth}}</p>
+    <div class="zad3">Interests:
+        <app-list-component [interests]="interests" [selected]="selected" (selectedChange)="handleSelectedChange($event)" ></app-list-component>
+    </div>
+</div>
+<div class="edit" *ngIf="selected > -1"> 
+    <h2>Edit:</h2>
+    <div>
+        <label>interest:</label>
+            <input #box [(ngModel)]="interests[selected]" />
+            <button (click)="save(selected, box.value)">Save</button>
+    </div>
+</div>
